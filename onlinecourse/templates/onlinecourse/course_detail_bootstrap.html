@@ -43,14 +43,17 @@
     <div class="container-fluid">
             <h2>{{ course.name }}</h2>
             <div class="card-columns-vertical">
+                {% if user.is_authenticated %}
                 {% for lesson in course.lesson_set.all %}
+                </br>
                     <div class="card mt-1">
                         <div class="card-header"><h5>Lesson {{lesson.order|add:1}}: {{lesson.title}}</h5></div>
                         <div class="card-body">{{lesson.content}}</div>
                     </div>
                 {% endfor %}
+                {% endif %}
             </div>
-            <!-- Course detail template changes go here -->
+            <input class="btn btn-primary" data-toggle="collapse" data-target="#exam">Start Exam</input>
     </div>
 </body>
 </html>
